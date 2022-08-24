@@ -101,8 +101,8 @@ void delete_begin()
 void last_del()
 {
     struct node *ttm, *temp;
-     temp = head;
-     ttm=head->next;
+    temp = head;
+    ttm = head->next;
     while (ttm->next != NULL)
     {
         ttm = temp->next->next;
@@ -157,19 +157,40 @@ void display()
         temp = temp->next;
     }
 }
+void linear_search(struct node *head)
+{
+    struct node *temp;
+    temp = head;
+    printf("Enter the data you want to search: ");
+    int el, cn = 1;
+    scanf("%d", &el);
+    while (temp != NULL)
+    {
+        if (temp->data == el)
+        {
+            printf("The element is found at %d position");
+            break;
+        }
 
+        temp = temp->next;
+    }
+    if (temp == NULL)
+    {
+        printf("The element is not found ");
+    }
+}
 int main(int argc, char const *argv[])
 
 {
 
     create_node();
     int choice = 0;
-    while (choice != 8)
+    while (choice !=9)
     {
         printf("\n\n****Main Menu****\n");
         printf("\nChoose one option from the following list ...\n");
         printf("\n===============================================\n");
-        printf("\n1.Insert in begining\n2.Insert at last\n3.Insert at any random location\n4.Delete from Beginning\n  5.Delete from last\n6.Delete node after specified location\n7.Show\n8.Exit\n");
+        printf("\n1.Insert in begining\n2.Insert at last\n3.Insert at any random location\n4.Delete from Beginning\n5.Delete from last\n6.Delete node after specified location\n7.Show\n8.linear search\n9.Exit");
         printf("\nEnter your choice?\n");
         scanf("\n%d", &choice);
         switch (choice)
@@ -190,16 +211,19 @@ int main(int argc, char const *argv[])
             last_del();
             break;
         case 6:
-           random_delete();
+            random_delete();
             break;
         case 7:
             display();
+            break;case 8:
+            linear_search(head);
             break;
-        case 8:
+        case 9:
             exit(0);
             break;
+        
         default:
-            printf("Please enter valid choice..");
+            printf("Please enter valid choice!!!!!!");
         }
     }
     return 0;
