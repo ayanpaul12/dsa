@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <ctype.h>
 
 char stack[100];
 int top = -1;
@@ -22,55 +22,30 @@ int priority(char x)
     if (x == '(')
         return 0;
 
-    if (x == '+' || x == '-')
+    if (x == '^')
+    {
         return 1;
+    }
+
+    if (x == '+' || x == '-')
+        return 2;
 
     if (x == '*' || x == '/')
-        return 2;
-    if (x == '^')
-
         return 3;
-}
-
-int check_al_num(char e)
-{
-    if ((e > 64 && e < 91) || (e > 96 && e < 123))
-    {
-        return 2;
-    }
-    else if ((e > 47 && e < 58))
-    {
-        return 3;
-    }
-
-    else
-    {
-        return 4;
-    }
+    return 0;
 }
 
 int main()
 {
     char exp[100];
     char *e, x;
-    printf("Enter the expression using alphabets only  : ");
-    scanf("%s", exp);
+    printf("Enter the expression : ");
     printf("\n");
     e = exp;
-
     while (*e != '\0')
     {
-
-        if (check_al_num(*e) == 2)
-        {
+        if (isalnum(*e))
             printf("%c ", *e);
-        }
-        else if (check_al_num(*e) == 3)
-        {
-            printf(
-                "Enter alphabets only");
-            break;
-        }
         else if (*e == '(')
             push(*e);
         else if (*e == ')')
