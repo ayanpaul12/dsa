@@ -27,8 +27,8 @@ void push()
         newnode->next = head;
         head = newnode;
         printf("Pushed sucessfully........");
+        count++;
     }
-    count++;
 }
 void pop()
 {
@@ -44,10 +44,9 @@ void pop()
         temp = head->next;
         free(head);
         head = temp;
-
         printf("Element is popped sucessfully.......");
+        count--;
     }
-    count--;
 }
 
 void peek()
