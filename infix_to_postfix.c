@@ -67,8 +67,7 @@ int main()
         }
         else if (check_al_num(*e) == 3)
         {
-            printf(
-                "Enter alphabets only");
+            printf("Enter alphabets only");
             break;
         }
         else if (*e == '(')
