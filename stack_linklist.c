@@ -1,38 +1,38 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 struct node
 {
     int data;
-    struct node* next;
+    struct node *next;
 };
 
-struct node *head=NULL;
-   int count = -1;
-   int size;
+struct node *head = NULL;
+int count = -1;
+int size;
 
 void push()
 {
-    if (count == size-1)
+    if (count == size - 1)
     {
         printf("Stack overflow,you can not push data!!!!!!");
     }
     else
     {
         struct node *newnode;
-    newnode = (struct node *)malloc(sizeof(struct node));
-    printf("Enter the data: ");
-    newnode->next = NULL;
-    scanf("%d", &newnode->data);
-    newnode->next = head;
-    head = newnode;
+        newnode = (struct node *)malloc(sizeof(struct node));
+        printf("Enter the data: ");
+        newnode->next = NULL;
+        scanf("%d", &newnode->data);
+        newnode->next = head;
+        head = newnode;
         printf("Pushed sucessfully........");
     }
     count++;
 }
 void pop()
 {
-    if (head==NULL)
+    if (head == NULL)
     {
         printf("Stack underflow,nothing to be popped!!!!!!!");
     }
@@ -40,37 +40,33 @@ void pop()
     else
     {
 
-    struct node *temp;
-    temp = head->next;
-    free(head);
-    head = temp;
+        struct node *temp;
+        temp = head->next;
+        free(head);
+        head = temp;
 
-
-       
-         printf("Element is popped sucessfully.......");
+        printf("Element is popped sucessfully.......");
     }
     count--;
 }
 
 void peek()
 {
-    
-     if (head==NULL)
+
+    if (head == NULL)
     {
         printf("Stack is empty!!!!!!");
     }
     else
     {
-        printf("The top element is: %d ",head->data);
+        printf("The top element is: %d ", head->data);
     }
 }
 
-
-
 int main(int argc, char const *argv[])
 {
-     printf("Enter the max size of your stack: ");
-      scanf("%d",&size);
+    printf("Enter the max size of your stack: ");
+    scanf("%d", &size);
     // create_node();
     int choice = 0;
     while (choice != 8)
